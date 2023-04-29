@@ -3,6 +3,7 @@ const passport = require('passport');
 const session = require('express-session');
 const morgan = require('morgan')
 const path = require('path');
+const cors = require('cors')
 const app = express();
 require('dotenv').config();
 
@@ -28,6 +29,20 @@ app.use(passport.session());
 
 //routes
 app.use(require('./routes/routes'))
+const dominiosPermitidos = [process.env.FRONTEND_URL];
+
+const corsOptions = {
+    origin: function (origin, callback){
+        if(dominiosPermitidos.indexOf(origin) !== -1){
+            //El origin del request esta permitidos
+            callback(null, true);
+        }else{
+            callback(new Error('No permitido por CORS'))
+        }
+    }
+}
+
+app.use(cors(corsOptions));
 app.use('/auth', authRoutes);
 
 // Static Files
