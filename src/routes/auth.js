@@ -27,6 +27,22 @@ router.post('/create-user', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Obtiene todos los usuarios
+ *     description: Obtiene una lista de todos los usuarios registrados
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ */
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 

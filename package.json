@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "webpack": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,17 +25,13 @@
     "passport-local": "^1.0.0",
     "pdfkit": "^0.13.0",
     "pdfmake": "^0.2.7",
-    "reactstrap": "^9.1.9"
+    "reactstrap": "^9.1.9",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
     "nodemon": "^1.17.5",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "webpack": "^4.11.1",
-    "webpack-cli": "^3.0.3"
+    "react-dom": "^16.4.0"
   }
 }

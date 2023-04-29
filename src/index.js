@@ -5,6 +5,8 @@ const morgan = require('morgan')
 const path = require('path');
 const cors = require('cors')
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 require('dotenv').config();
 
 const { mongoose } = require('./database')
@@ -25,6 +27,19 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+// Configuración de opciones de Swagger
+const options = {
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'API techinical test',
+        version: '1.0.0',
+        description: '',
+      },
+    },
+    apis: ['./routes/*.js',], // Rutas de tu aplicación que contienen documentación de Swagger
+  };
+
 
 
 //routes
@@ -32,14 +47,10 @@ app.use(require('./routes/routes'))
 const dominiosPermitidos = [process.env.FRONTEND_URL];
 
 const corsOptions = {
-    origin: function (origin, callback){
-        if(dominiosPermitidos.indexOf(origin) !== -1){
-            //El origin del request esta permitidos
-            callback(null, true);
-        }else{
-            callback(new Error('No permitido por CORS'))
-        }
-    }
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
 }
 
 app.use(cors(corsOptions));
