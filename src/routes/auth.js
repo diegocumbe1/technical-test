@@ -33,12 +33,12 @@ router.post('/login', async (req, res) => {
   try {
     const user = await Users.findOne({ email });
     if (!user) {
-      res.json({ message: 'Credenciales inválidas', statuscode:500 });
+      throw new Error('Credenciales inválidas');
     }
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      res.json({ message: 'Credenciales inválidas', statuscode:500 });
+      throw new Error('Credenciales inválidas');
     }
 
     // Omitimos la contraseña en la respuesta
