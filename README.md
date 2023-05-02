@@ -1,4 +1,4 @@
-Inventario de productos
+##Inventario de productos
 Descripción
 Este proyecto tiene como objetivo llevar un control del inventario de productos de una empresa y generar archivos PDF descargables o enviarlos por correo electrónico.
 
