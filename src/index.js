@@ -43,17 +43,17 @@ const options = {
 
 
 //routes
-app.use(require('./routes/routes'))
 const dominiosPermitidos = [process.env.FRONTEND_URL];
 
 const corsOptions = {
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 }
 
 app.use(cors(corsOptions));
+app.use(require('./routes/routes'))
 app.use('/auth', authRoutes);
 
 // Static Files
