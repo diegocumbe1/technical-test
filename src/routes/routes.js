@@ -74,20 +74,6 @@ router.get('/products/:companyId', (req, res) =>{
 
 });
 
-router.get('/products-company/:companyId', (req, res) =>{
-  const { companyId } = req.params;
-
-  Product.find({company:companyId})
-    .then(products => {
-      console.log('products', products);
-      res.json(products);
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: 'An error occurred' });
-    });
-
-});
 
 router.post('/product', async (req, res) => {
   const { name, image, stock, price, company } = req.body;
@@ -116,7 +102,7 @@ router.post('/product', async (req, res) => {
   }
 });
 
-router.get('/download-pdf-company/:companyId', async (req, res) => {
+router.get('/download-pdf/:companyId', async (req, res) => {
   const { companyId } = req.params;
   
   try {
